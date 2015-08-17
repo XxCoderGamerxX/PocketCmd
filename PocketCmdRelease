@@ -1,0 +1,330 @@
+/* Made by MaxTheGamer with help of VCraft and Quantum
+===[ PocketCmd 1.2 BETA]===
+REPORT BUGS TO: @tgct99 on TWITTER
+Do not distribute without the written permision of MaxTheGamer. */
+var ver = "1.3.1"
+function newLevel(){
+	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ")
+	print("Welcome to PocketCmd " + ver);
+}
+/* --<=>-- VAR + ITEMS --<=>-- */
+var sa = false;
+//update installer
+
+
+/* --<=>-- COMMANDS --<=>-- */
+
+function procCmd (cmd) {
+	cmd = cmd.toLowerCase();
+	/* Changelog */
+	if (cmd == "changelog"){
+		clientMessage("§6PocketCmd 1.3.1\n*More options for speed.\n*Fixed help page. ");
+	}
+      //HELP
+      if(cmd=="help" || cmd == "help 1"){
+		 clientMessage("§dHelp page 1 out of 3. \n \/changelog -> A list of all changes in the latest update.\n \/cleari -> clear your inventory.\n \/coords -> View your current co-ordinates.\n \/credits -> Info about the mod.\n \/fly -> Enable or disable flying.");
+	 }
+	 if(cmd=="help 2"){
+		 clientMessage("§dHelp page 2 out of 3.\n \/fastmine -> Enable or disable Fastmine.\n \/gamemode -> Change your gamemode. \n \/gamespeed -> Change the speed at which the game plays.\n \/heal -> Restore your health.\n \/kill -> Commit suicide.");
+	 }
+	 if(cmd=="help 3"){
+		 clientMessage("§dHelp page 3 out of 3.\n \/kit -> Load a kit to play with.\n \/place -> Place down structures.\n \/speed -> Enable or disable speed boost.\n \/superattack -> Enable super attack.\n \/time -> Change the time.")
+	 }
+
+	   /* CLEAR INVENTORY */
+	   if (cmd == "cleari"){
+	   clientMessage("§l§cThis will remove ALL items from your inventory!\n §c§l Type \"\/cleari now\" to clear it.");}
+	   if (cmd == "cleari now"){
+		   Player.clearInventorySlot(1);
+		   Player.clearInventorySlot(2);
+		   Player.clearInventorySlot(3);
+		   Player.clearInventorySlot(4);
+		   Player.clearInventorySlot(5);
+		   Player.clearInventorySlot(6);
+		   Player.clearInventorySlot(7);
+		   Player.clearInventorySlot(8);
+		   Player.clearInventorySlot(9);
+		   Player.clearInventorySlot(10);
+		   Player.clearInventorySlot(11);
+		   Player.clearInventorySlot(12);
+		   Player.clearInventorySlot(13);
+		   Player.clearInventorySlot(14);
+		   Player.clearInventorySlot(15);
+		   Player.clearInventorySlot(16);
+		   Player.clearInventorySlot(17);
+		   Player.clearInventorySlot(18);
+		   Player.clearInventorySlot(19);
+		   Player.clearInventorySlot(20);
+		   Player.clearInventorySlot(21);
+		   Player.clearInventorySlot(22);
+		   Player.clearInventorySlot(23);
+		   Player.clearInventorySlot(24);
+		   Player.clearInventorySlot(25);
+		   Player.clearInventorySlot(26);
+		   Player.clearInventorySlot(27);
+		   Player.clearInventorySlot(28);
+		   Player.clearInventorySlot(29);
+		   Player.clearInventorySlot(30);
+		   Player.clearInventorySlot(31);
+		   Player.clearInventorySlot(32);
+		   Player.clearInventorySlot(33);
+		   Player.clearInventorySlot(34);
+		   Player.clearInventorySlot(35);
+		   Player.clearInventorySlot(36);
+		   Player.clearInventorySlot(37);
+		   Player.clearInventorySlot(38);
+		   Player.clearInventorySlot(39);
+		   Player.clearInventorySlot(40);
+		   Player.clearInventorySlot(41);
+		   Player.clearInventorySlot(42);
+		   Player.clearInventorySlot(43);
+		   Player.clearInventorySlot(44);
+		   clientMessage("§bYour inventory has been cleared successfully!");
+	   }
+	   // HEAL
+	   if (cmd == "heal"){
+		   Player.setHealth(20);
+		   clientMessage("§bYou have been health successfully.");
+	   }
+	   // Gamemode
+	        if (cmd == "gamemode"){
+			clientMessage("§7Available gamemodes\: \n -> \/gamemode s ->Survival \n -> \/gamemode c -> Creative."); }
+		// Gamemode survival
+		   if (cmd == "gamemode s"){
+			   Level.setGameMode(0);
+		   clientMessage("§bYour gamemode has been changed to Survival."); }
+		//gamemode creative
+		   if(cmd == "gamemode c"){
+			   Level.setGameMode(1);
+		   clientMessage("§bYour gamemode has been changed to Creative.");}
+		//KILL
+		if(cmd == "kill"){
+			Player.setHealth(0);
+
+		   clientMessage("§bYou died. Rest in peace. §oor respawn...");
+
+		}
+		// SPEED
+		if (cmd=="speed"){
+			clientMessage("§7Usage: \/speed normal:sprint:quick:fast:superfast");
+		}
+		if(cmd == "speed sprint"){
+			Entity.addEffect(getPlayerEnt(), MobEffect.movementSpeed, 9999*9999, 2, false, false);
+			clientMessage("§bYour speed has increased to §esprint!");
+		}
+		if(cmd == "speed quick"){
+			Entity.addEffect(getPlayerEnt(), MobEffect.movementSpeed, 9999*9999, 4, false, false);
+			clientMessage("§bYour speed has increased to §equick!");
+		}
+		if(cmd=="speed fast"){
+			Entity.addEffect(getPlayerEnt(), MobEffect.movementSpeed, 9999*9999, 6, false, false);
+			clientMessage("§bYour speed has increased to §efast!");
+		}
+		if(cmd=="speed superfast"){
+			Entity.addEffect(getPlayerEnt(), MobEffect.movementSpeed, 9999*9999, 12, false, false);
+			clientMessage("§bYour speed has increased to §esuper fast!");
+		}
+		if(cmd == "speed normal") {
+			Entity.removeEffect(getPlayerEnt(), MobEffect.movementSpeed);
+			clientMessage("§bYou no longer move faster.");
+		}
+
+		//GODMODE
+	/*	if(cmd == "god")
+		 {
+			Player.setHealth(32767);
+			clientMessage("§bGodmode enabled. You won't die anymore.");
+		 } */
+
+        //KITS
+        if(cmd =="kit")
+		{
+			clientMessage("§7Available kits\:\n\*Starter\n\*Fighter\n\*Pro\n\*Farmer\n\*Netherguy\n§eDo \/kit <kitname> to get a kit.");
+		}
+        //KIT -> Starter
+        if(cmd =="kit starter"){
+			Player.addItemInventory(4,64,0);
+			Player.addItemInventory(268,1,0);
+			Player.addItemInventory(267,1,0);
+			Player.addItemInventory(268,1,0);
+			Player.addItemInventory(269,1,0);
+			Player.addItemInventory(270,1,0);
+			Player.addItemInventory(271,1,0);
+			clientMessage("§bThe Starter Kit has been obtained!");
+		}
+        if(cmd=="kit fighter"){
+			Player.addItemInventory(261,1,0);
+			Player.addItemInventory(262,128,0);
+			Player.addItemInventory(267,1,0);
+			Player.addItemInventory(259,1,0);
+			Player.addItemInventory(260,64,0);
+			clientMessage("§bThe Fighter Kit has been obtained.")
+		}
+		if(cmd=="kit pro"){
+			Player.addItemInventory(264,32,0);
+			Player.addItemInventory(276,1,0);
+			Player.addItemInventory(277,1,0);
+			Player.addItemInventory(278,1,0);
+			Player.addItemInventory(279,1,0);
+			Player.addItemInventory(364,64,0);
+			Player.addItemInventory(310,1,0);
+			Player.addItemInventory(311,1,0);
+			Player.addItemInventory(312,1,0);
+			Player.addItemInventory(313,1,0);
+			clientMessage("§bThe Pro Kit has been obtained.");
+
+		}
+		if(cmd=="kit farmer"){
+			Player.addItemInventory(292,1,0);
+			Player.addItemInventory(295,15,0);
+			Player.addItemInventory(361, 15, 0);
+			Player.addItemInventory(362,15,0);
+			Player.addItemInventory(391,15,0);
+			Player.addItemInventory(392,15,0);
+			clientMessage("§bThe Farmer kit has been obtained.");
+		}
+		if(cmd=="kit netherguy"){
+			Player.addItemInventory(10, 32, 0);
+			Player.addItemInventory(87, 64, 0);
+			Player.addItemInventory(89, 32, 0);
+			Player.addItemInventory(49, 15, 0);
+			Player.addItemInventory(378, 12, 0);
+			Player.addItemInventory(283, 1, 0);
+			Player.addItemInventory(260, 24, 0);
+		}
+
+		//Fast Pickax
+		    if(cmd=="fastmine"){
+				clientMessage("§7Use \/fastmine on:off to enable or not fastmine.")
+			}
+			if(cmd=="fastmine on"){
+			Entity.addEffect(getPlayerEnt(), MobEffect.digSpeed, 9999*9999, 54, false, false);
+			clientMessage("§bFastmine has been enabled!")
+			}
+			if(cmd=="fastmine off"){
+				Entity.removeEffect(getPlayerEnt(), MobEffect.digSpeed);
+				clientMessage("§bFastmine has been disabled!")
+			}
+		//FLY ON OFF
+		   if (cmd =="fly"){
+			   clientMessage("§7Use \/fly on:off to enable flying or not.");
+		   }
+		   if(cmd=="fly on"){
+			   Player.setCanFly(1);
+			   clientMessage("§bYou are now able to fly!");
+		   }
+		   if (cmd=="fly off"){
+			   Player.setCanFly(0);
+			   clientMessage("§bYou are no longer able to fly!");
+		   }
+		   //CREDITS
+		   if(cmd=="credits"){
+			   clientMessage("§7Made by: MaxTheGamer.\n§7Help of: VCraft and Quantum. \n§7Report bugs: @tgct99.\n§7Version: 1.0 BETA.")
+		   }
+		   //TIME
+		   if(cmd=="time"){
+			   clientMessage("§7Usage: \/time day:night:morning:evening");
+		   }
+		   if(cmd=="time day"){
+			   Level.setTime(1000);
+			   clientMessage("§bTime set to day.")
+		   }
+		   if(cmd=="time night"){
+			   Level.setTime(13000);
+			   clientMessage("§bTime set to night.");
+		   }
+		   if(cmd=="time morning"){
+			   Level.setTime(0);
+			   clientMessage("§bTime set to morning.");
+		   }
+		   if(cmd=="time evening"){
+			   Level.setTime(11300);
+			   clientMessage("§bTime set to evening.");
+		   }
+		   //COORDS
+      if(cmd=="coords"){
+				clientMessage("§bYour current co-ordinates are X:" + Math.floor(getPlayerX()) + " Y: " + Math.floor(getPlayerY()) + " Z: " + Math.floor(getPlayerZ()) + " .");
+			}
+			if(cmd=="place"){
+				clientMessage("§aUse this command to place awesome and useful items in your world.\n§aA list of supported items can be found when doing \/place list.\n§aHave fun!");
+			}
+      if(cmd=="place list"){
+				clientMessage("§fPlace list page 1 out of 1.\n \/place cobtrap -> Trap made of cobweb.\n \/place diamondblocks -> Place 13 diamond blocks. \n  \/place cobblegen -> Place cobblestone generator.\n \/place netherportal -> Place a nether portal and get flint and steel!");
+			}
+			//place Cobweb Trap
+			if(cmd=="place cobtrap"){
+			Level.setTile(getPlayerX()+1, getPlayerY(), getPlayerZ(), 30);  Level.setTile(getPlayerX()+2, getPlayerY(), getPlayerZ()+1, 30);
+			Level.setTile(getPlayerX()+2, getPlayerY(), getPlayerZ(), 30);  Level.setTile(getPlayerX()+1, getPlayerY()+1, getPlayerZ(), 30);
+			Level.setTile(getPlayerX()+2, getPlayerY()+1, getPlayerZ(), 30);Level.setTile(getPlayerX()+1, getPlayerY(), getPlayerZ()+1, 30);
+			Level.setTile(getPlayerX()+1, getPlayerY()+1, getPlayerZ()+1, 30);Level.setTile(getPlayerX()+2, getPlayerY()+1, getPlayerZ()+1, 30);
+			clientMessage("§bCobtrap placed.")
+		}
+		if (cmd == "place diamondblocks"){
+			Level.setTile(getPlayerX()-1, getPlayerY()+1, getPlayerZ()+2, 57);        Level.setTile(getPlayerX()-1, getPlayerY()-1, getPlayerZ()+4, 57);
+			Level.setTile(getPlayerX()-1, getPlayerY(), getPlayerZ()+2, 57);          Level.setTile(getPlayerX()-1, getPlayerY(), getPlayerZ()+4, 57);
+			Level.setTile(getPlayerX()-1, getPlayerY()-1, getPlayerZ()+2, 57);        Level.setTile(getPlayerX()-1, getPlayerY()+1, getPlayerZ()+4, 57);
+
+			Level.setTile(getPlayerX(), getPlayerY()+2, getPlayerZ()+3, 57);          Level.setTile(getPlayerX(), getPlayerY()+3, getPlayerZ()+3, 11);
+
+			Level.setTile(getPlayerX()+1, getPlayerY()-1, getPlayerZ()+2, 57);        Level.setTile(getPlayerX()+1, getPlayerY()-1, getPlayerZ()+4, 57);
+			Level.setTile(getPlayerX()+1, getPlayerY(), getPlayerZ()+2, 57);          Level.setTile(getPlayerX()+1, getPlayerY(), getPlayerZ()+4, 57);
+			Level.setTile(getPlayerX()+1, getPlayerY()+1, getPlayerZ()+2, 57);        Level.setTile(getPlayerX()+1, getPlayerY()+1, getPlayerZ()+4, 57);
+			clientMessage("§bDiamond Blocks placed.");
+
+		}
+		if (cmd =="place cobblegen"){
+			Level.setTile(getPlayerX()-1, getPlayerY()-1, getPlayerZ()+1, 98); Level.setTile(getPlayerX(), getPlayerY()-1, getPlayerZ()+1, 98);   Level.setTile(getPlayerX()+1, getPlayerY()-1, getPlayerZ()+1, 98); Level.setTile(getPlayerX()+2, getPlayerY()-1, getPlayerZ()+1, 98);
+			Level.setTile(getPlayerX()-2, getPlayerY()-1, getPlayerZ()+2, 98); Level.setTile(getPlayerX()+3, getPlayerY()-1, getPlayerZ()+2, 98);
+			Level.setTile(getPlayerX()-1, getPlayerY()-1, getPlayerZ()+2, 10); Level.setTile(getPlayerX()+1, getPlayerY()-2, getPlayerZ()+2, 0);  Level.setTile(getPlayerX()+2, getPlayerY()-1, getPlayerZ()+2, 8);
+			Level.setTile(getPlayerX()-1, getPlayerY()-1, getPlayerZ()+3, 98); Level.setTile(getPlayerX(), getPlayerY()-1, getPlayerZ()+3, 98);   Level.setTile(getPlayerX()+1, getPlayerY()-1, getPlayerZ()+3, 98); Level.setTile(getPlayerX()+2, getPlayerY()-1, getPlayerZ()+3, 98);
+			clientMessage("§bCobblestone generator placed.");
+		}
+		if(cmd=="place netherportal"){
+			Level.setTile(getPlayerX()-1, getPlayerY()+3, getPlayerZ()+1, 49); Level.setTile(getPlayerX(), getPlayerY()+3, getPlayerZ()+1, 49);
+			Level.setTile(getPlayerX()-2, getPlayerY()+2, getPlayerZ()+1, 49); Level.setTile(getPlayerX()+1, getPlayerY()+2, getPlayerZ()+1, 49);
+			Level.setTile(getPlayerX()-2, getPlayerY()+1, getPlayerZ()+1, 49); Level.setTile(getPlayerX()+1, getPlayerY()+1, getPlayerZ()+1, 49);
+			Level.setTile(getPlayerX()-2, getPlayerY(), getPlayerZ()+1, 49 );  Level.setTile(getPlayerX()+1, getPlayerY(), getPlayerZ()+1, 49);
+			Level.setTile(getPlayerX()-1, getPlayerY()-1, getPlayerZ()+1, 49); Level.setTile(getPlayerX(), getPlayerY()-1, getPlayerZ()+1, 49);
+			Player.addItemInventory(259, 1, 0);
+			clientMessage("§bNether portal placed. Light it with the flint and steel.");
+		}
+
+		if(cmd=="superattack"){
+			clientMessage("§7Usage: \/superattack on:off");
+		}
+		if(cmd=="superattack on"){
+			sa = true;
+			clientMessage("§bSuper Attack has been enabled.")
+		}
+		else if (cmd == "superattack off"){
+			sa = false;
+			clientMessage("§bSuper Attack has been disabled.")
+		}
+		if(cmd == "gamespeed"){
+			clientMessage("§7Usage: /gamespeed slow:normal:fast:wow");
+		}
+		else if(cmd=="gamespeed slow"){
+			ModPE.setGameSpeed(2);
+			clientMessage("§bThe game is now slower than ever!");
+		}
+		else if (cmd=="gamespeed normal"){
+			ModPE.setGameSpeed(20);
+			clientMessage("§bThe game is back to normal.");
+		}
+		else if (cmd=="gamespeed fast"){
+			ModPE.setGameSpeed(50);
+			clientMessage("§bThe game is now faster than ever!");
+		}
+		else if (cmd=="gamespeed wow"){
+			ModPE.setGameSpeed(130);
+			clientMessage("§b§oIs this supposed to happen?!");
+		}
+
+		}
+
+		function attackHook(attacker, victim){
+			if(sa == true){
+				Entity.setFireTicks(victim, 10);
+			}
+
+		}
