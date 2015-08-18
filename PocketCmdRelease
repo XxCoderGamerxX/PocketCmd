@@ -2,49 +2,11 @@
 ===[ PocketCmd 1.3]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.4DEV"
-var buttonWindow;
+var ver = "1.4DEV";
+var setInterval = setInterval;
 function newLevel(){
-	var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
- //A variable we'll use later to add the button to the current MCPE activity
- activity.runOnUiThread(new java.lang.Runnable({ run: function() {
- //This will allow our button to run on the current UI thread of MCPE
-			 try {
-				 var toggled = false;
-				 var layout = new android.widget.RelativeLayout(activity);
-				 var button = new android.widget.ToggleButton(activity);
-				 button.setText("Zoom");
-				 button.setChecked(toggled);
-				 button.setOnClickListener(new android.view.View.OnClickListener({onClick: function (viewarg){if(!toggled){
-					 toggled = true;
-					 ModPE.setFov(10);
-					 clientMessage("§bZoomed in.");
-				 }
-				 else{
-					 toggled = false;
-					 ModPE.setFov(70);
-					 clientMessage("§bZoomed out.");
-				 }
-				 button.setChecked(toggled);
-				 }
-					}));
-				 layout.addView(button);//Add our button to our layout
-				 buttonWindow.setContentView(layout);//Add our layout to our window
-				 buttonWindow.setWidth(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
-				 buttonWindow.setHeight(android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
-				 //Make our window the same size as the button within
-				 buttonWindow.setBackgroundDrawable(new
-android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
-				 //The outline of our button's(The window) color
-				 buttonWindow.showAtLocation(activity.getWindow().getDecorView(), android.view.Gravity.RIGHT | android.view.Gravity.BOTTOM, 0, 0);
-				 //The location of our button on the screen, BOTTOM RIGHT
-				 //The 0, 0 is the margin size, use this to push it around along those locations
-			 }catch(problem){
-				 print(problem); //Print our error if we failed to make the button
-			 }
- }}));
-	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ")
-	print("Welcome to PocketCmd " + ver);
+	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
+	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
   }
 /* --<=>-- VAR + ITEMS --<=>-- */
 var sa = false;
