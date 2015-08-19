@@ -2,14 +2,16 @@
 ===[ PocketCmd 1.3]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.4DEV";
-var setInterval = setInterval;
+var ver = "1.4-dev-5";
 function newLevel(){
 	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
   }
 /* --<=>-- VAR + ITEMS --<=>-- */
 var sa = false;
+var spawnX;
+var spawnY;
+var spawnZ;
 /* --<=>-- COMMANDS --<=>-- */
 function procCmd (cmd) {
 	cmd = cmd.toLowerCase();
@@ -350,9 +352,24 @@ function procCmd (cmd) {
 			ModPE.setFov(150);
 			clientMessage("§bYour field of view has been set to: extra large.");
 			}
-}
-
-
+		if(cmd=="setspawn"){
+			Level.setSpawn(getPlayerX(), getPlayerY(), getPlayerZ());
+			var spawnX = Player.getX();
+			var spawnY = Player.getY();
+			var spawnZ = Player.getZ();
+			clientMessage("§aYour spawn has been set to: " + spawnX + " " + spawnY + " " + spawnZ);
+		}
+		if(cmd=="spawn"){
+			clientMessage("§7USage: tp:coords.");
+			ModPE.showTipMessage("§e\/spawn tp or \/spawn coords");
+		}
+			else if(cmd=="spawn tp"){
+				setPosition(Player.getEntity(), spawnX, spawnY, spawnZ);
+				clientMessage("§aTeleported you to spawn.");
+			}
+			else if(cmd=="spawn coords"){
+				clientMessage("§aThe co-ordinates of the spawn location are X: " + Math.floor(spawnX) + " Y: " + Math.floor(spawnY) + " Z: " + Math.floor(spawnZ));
+			}
 		function attackHook(attacker, victim){
 			if(sa == true){
 				Entity.setFireTicks(victim, 10);
