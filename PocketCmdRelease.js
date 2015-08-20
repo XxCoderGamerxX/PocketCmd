@@ -2,7 +2,7 @@
 ===[ PocketCmd 1.4]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.4-dev-8";
+var ver = "1.4.0";
 function newLevel(){
 	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
@@ -306,10 +306,20 @@ function procCmd (cmd) {
 		}
 		if(cmd=="superattack on"){
 			sa = true;
+			if(sa==true){
+			function attackHook(attacker, victim){
+					Entity.setFireTicks(victim, 10);
+				}
+			}
 			clientMessage("§bSuper Attack has been enabled.")
 		}
 		else if (cmd == "superattack off"){
 			sa = false;
+			if(sa==true){
+				function attackHook(attacker, victim){
+					Entity.setFireTicks(victim, 20);
+				}
+			}
 			clientMessage("§bSuper Attack has been disabled.")
 		}
 		if(cmd == "gamespeed"){
@@ -432,10 +442,4 @@ function procCmd (cmd) {
 		 clientMessage("§bYou're now invisible!");
 		 ModPE.showTipMessage("§aSuccess!");
 	 }
-
-		function attackHook(attacker, victim){
-			if(sa == true){
-				Entity.setFireTicks(victim, 10);
-			}
-		}
 	}
