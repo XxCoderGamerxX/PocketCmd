@@ -1,23 +1,23 @@
 /* Made by MaxTheGamer with help of VCraft and Quantum
-===[ PocketCmd 1.3]===
+===[ PocketCmd 1.4]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.4-dev-5";
+var ver = "1.4-dev-6";
 function newLevel(){
 	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
   }
 /* --<=>-- VAR + ITEMS --<=>-- */
 var sa = false;
-var spawnX;
-var spawnY;
-var spawnZ;
+var spawnX = NaN && null;
+var spawnY = NaN && null;
+var spawnZ = NaN && null;
 /* --<=>-- COMMANDS --<=>-- */
 function procCmd (cmd) {
 	cmd = cmd.toLowerCase();
 	/* Changelog */
 	if (cmd == "changelog"){
-		clientMessage("§6PocketCmd "+ ver + "\n*Added \/setfov command.\n*Added Zoom in button\n*Fixed bug with \/fly off. ");
+		clientMessage("§6PocketCmd "+ ver + "\n*Added \/setfov command.\n*Added \/setspawn\n*Added \/spawn\n*Fixed bug with \/fly off. ");
 	}
       //HELP
       if(cmd=="help" || cmd == "help 1"){
@@ -27,10 +27,10 @@ function procCmd (cmd) {
 		 clientMessage("§dHelp page 2 out of 4.\n \/fastmine -> Enable or disable Fastmine.\n \/gamemode -> Change your gamemode. \n \/gamespeed -> Change the speed at which the game plays.\n \/heal -> Restore your health.\n \/kill -> Commit suicide.");
 	 }
 	 if(cmd=="help 3"){
-		 clientMessage("§dHelp page 3 out of 4.\n \/kit -> Load a kit to play with.\n \/place -> Place down structures.\n\/setfov -> Change your field of view.\n\/speed -> Enable or disable speed boost.\n \/superattack -> Enable super attack.");
+		 clientMessage("§dHelp page 3 out of 4.\n \/kit -> Load a kit to play with.\n \/place -> Place down structures.\n \/setfov -> Change your field of view.\n \/setspawn -> Set respawn location at your current coords.\n \/spawn -> Teleport or get the coords of spawn location.");
 	 }
 	 if(cmd=="help 4"){
-		 clientMessage("§dHelp page 4 out of 4.\n \/time -> Change the time.")
+		 clientMessage("§dHelp page 4 out of 4.\n \/speed -> Enable or disable speed boost.\n \/superattack -> Enable super attack.\n \/time -> Change the time.")
 	 }
 
 	   /* CLEAR INVENTORY */
@@ -364,15 +364,27 @@ function procCmd (cmd) {
 			ModPE.showTipMessage("§e\/spawn tp or \/spawn coords");
 		}
 			else if(cmd=="spawn tp"){
+				if(spawnX == NaN || spawnX == null || spawnY == NaN || spawnY == null || spawnZ == NaN || spawnZ == null){
+					clientMessage("§cCould not teleport to spawn: spawn not set.");
+					ModpE.showTipMessage("§cError!");
+				}
+				else{
 				setPosition(Player.getEntity(), spawnX, spawnY, spawnZ);
 				clientMessage("§aTeleported you to spawn.");
 			}
+			}
 			else if(cmd=="spawn coords"){
-				clientMessage("§aThe co-ordinates of the spawn location are X: " + Math.floor(spawnX) + " Y: " + Math.floor(spawnY) + " Z: " + Math.floor(spawnZ));
+					if(spawnX == NaN || spawnX == null || spawnY == NaN || spawnY == null || spawnZ == NaN || spawnZ == null){
+						clientMessage("§cCould not show the co-ordinates: spawn location not valid.");
+						ModPE.showTipMessage("§cError!");
+					}
+					else {
+				clientMessage("§aThe co-ordinates of the spawn location are X: " + spawnX + " Y: " + spawnY + " Z: " + spawnZ);
+			}
 			}
 		function attackHook(attacker, victim){
 			if(sa == true){
 				Entity.setFireTicks(victim, 10);
 			}
-
 		}
+	}
