@@ -2,7 +2,7 @@
 ===[ PocketCmd 1.4]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.4-dev-6";
+var ver = "1.4-dev-7";
 function newLevel(){
 	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
@@ -17,20 +17,23 @@ function procCmd (cmd) {
 	cmd = cmd.toLowerCase();
 	/* Changelog */
 	if (cmd == "changelog"){
-		clientMessage("§6PocketCmd "+ ver + "\n*Added \/setfov command.\n*Added \/setspawn\n*Added \/spawn\n*Fixed bug with \/fly off. ");
+		clientMessage("§6PocketCmd "+ ver + "\n*Added \/setfov command.\n*Added \/setspawn\n*Added \/spawn\n*Added \/removent.\n*Added \/healent.\n*Added \/invisible.\n*Fixed bug with \/fly off. ");
 	}
       //HELP
-      if(cmd=="help" || cmd == "help 1"){
-		 clientMessage("§dHelp page 1 out of 4. \n \/changelog -> A list of all changes in the latest update.\n \/cleari -> clear your inventory.\n \/coords -> View your current co-ordinates.\n \/credits -> Info about the mod.\n \/fly -> Enable or disable flying.");
+      if(cmd=="help" || cmd == "help 1" || cmd=="help1"){
+		 clientMessage("§dHelp page 1 out of §e5. \n \/changelog -> A list of all changes in the latest update.\n \/cleari -> clear your inventory.\n \/coords -> View your current co-ordinates.\n \/credits -> Info about the mod.\n \/fly -> Enable or disable flying.");
 	 }
-	 if(cmd=="help 2"){
-		 clientMessage("§dHelp page 2 out of 4.\n \/fastmine -> Enable or disable Fastmine.\n \/gamemode -> Change your gamemode. \n \/gamespeed -> Change the speed at which the game plays.\n \/heal -> Restore your health.\n \/kill -> Commit suicide.");
+	 if(cmd=="help 2" || cmd=="help2"){
+		 clientMessage("§dHelp page 2 out of §e5.\n \/fastmine -> Enable or disable Fastmine.\n \/gamemode -> Change your gamemode. \n \/gamespeed -> Change the speed at which the game plays.\n \/heal -> Restore your health.\n \/healent -> Heal all entities.");
 	 }
-	 if(cmd=="help 3"){
-		 clientMessage("§dHelp page 3 out of 4.\n \/kit -> Load a kit to play with.\n \/place -> Place down structures.\n \/setfov -> Change your field of view.\n \/setspawn -> Set respawn location at your current coords.\n \/spawn -> Teleport or get the coords of spawn location.");
+	 if(cmd=="help 3" || cmd=="help3"){
+		 clientMessage("§dHelp page 3 out of §e5.\n \/invisible -> Become invisible.\n \/kill -> Commit suicide.\n \/kit -> Load a kit to play with.\n \/place -> Place down structures.\n \/removent -> Remove all nearby entities.");
 	 }
-	 if(cmd=="help 4"){
-		 clientMessage("§dHelp page 4 out of 4.\n \/speed -> Enable or disable speed boost.\n \/superattack -> Enable super attack.\n \/time -> Change the time.")
+	 if(cmd=="help 4" || cmd=="help4"){
+		 clientMessage("§dHelp page 4 out of §e5.\n \/setfov -> Change your field of view.\n \/setspawn -> Set the spawn location to your current coords.\n \/spawn -> Teleport or get the spawn coords.\n \/speed -> Enable or disable speed boost.\n \/superattack -> Enable super attack.")
+	 }
+	 if(cmd=="help 5" || cmd=="help5"){
+		 clientMessage("§dHelp page 5 out of §e5.\n \/time -> Change the time.")
 	 }
 
 	   /* CLEAR INVENTORY */
@@ -381,7 +384,47 @@ function procCmd (cmd) {
 					else {
 				clientMessage("§aThe co-ordinates of the spawn location are X: " + spawnX + " Y: " + spawnY + " Z: " + spawnZ);
 			}
-			}
+		}
+	 if(cmd=="removent"){
+		 Entity.remove(50);
+		 Entity.remove(51);
+		 Entity.remove(52);
+		 Entity.remove(53);
+		 Entity.remove(54);
+		 Entity.remove(55);
+		 Entity.remove(56);
+		 Entity.remove(57);
+		 Entity.remove(58);
+		 Entity.remove(59);
+		 Entity.remove(60);
+		 Entity.remove(61);
+		 Entity.remove(62);
+		 clientMessage("§bRemoved all mob entities successfully!");
+		 ModPE.showTipMessage("§aSuccess!");
+	 }
+	 if(cmd=="healent"){
+		 Entity.setHealth(50, 20);
+		 Entity.setHealth(51, 20);
+		 Entity.setHealth(52, 20);
+		 Entity.setHealth(53, 20);
+		 Entity.setHealth(54, 20);
+		 Entity.setHealth(55, 20);
+		 Entity.setHealth(56, 20);
+		 Entity.setHealth(57, 20);
+		 Entity.setHealth(58, 20);
+		 Entity.setHealth(59, 20);
+		 Entity.setHealth(60, 20);
+		 Entity.setHealth(61, 20);
+		 Entity.setHealth(62, 20);
+		 clientMessage("§bAll entities have been healt successfully!");
+		 ModPE.showTipMessage("§aSuccess!");
+	 }
+	 if(cmd=="invisible"){
+		 Entity.remove(getPlayerEnt());
+		 clientMessage("§bYou're now invisible!");
+		 ModPE.showTipMessage("§aSuccess!");
+	 }
+
 		function attackHook(attacker, victim){
 			if(sa == true){
 				Entity.setFireTicks(victim, 10);
