@@ -2,7 +2,7 @@
 ===[ PocketCmd 1.4]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.4-dev-7";
+var ver = "1.4-dev-8";
 function newLevel(){
 	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
@@ -367,9 +367,13 @@ function procCmd (cmd) {
 			ModPE.showTipMessage("§e\/spawn tp or \/spawn coords");
 		}
 			else if(cmd=="spawn tp"){
-				if(spawnX == NaN || spawnX == null || spawnY == NaN || spawnY == null || spawnZ == NaN || spawnZ == null){
+				if(spawnX == null|| spawnY == null ||spawnZ == null){
 					clientMessage("§cCould not teleport to spawn: spawn not set.");
-					ModpE.showTipMessage("§cError!");
+					ModPE.showTipMessage("§cError!");
+				}
+				else if(spawnX == NaN || spawnY == NaN || spawnZ == NaN){
+					clientMessage("§cCould not teleport to spawn: invalid co-ordinates.");
+					ModPE.showTipMessage("§cError.");
 				}
 				else{
 				setPosition(Player.getEntity(), spawnX, spawnY, spawnZ);
@@ -377,9 +381,13 @@ function procCmd (cmd) {
 			}
 			}
 			else if(cmd=="spawn coords"){
-					if(spawnX == NaN || spawnX == null || spawnY == NaN || spawnY == null || spawnZ == NaN || spawnZ == null){
-						clientMessage("§cCould not show the co-ordinates: spawn location not valid.");
+					if(spawnX == null||spawnY == null ||spawnZ == null){
+						clientMessage("§cCould not show the co-ordinates: spawn not defined.");
 						ModPE.showTipMessage("§cError!");
+					}
+					else if(spawnX == NaN || spawnY==NaN||spawnZ==NaN){
+						clientMessage("§cCould not show spawn location: invalid co-ordinates.");
+						ModPE.showTipMessage("§cError!")
 					}
 					else {
 				clientMessage("§aThe co-ordinates of the spawn location are X: " + spawnX + " Y: " + spawnY + " Z: " + spawnZ);
