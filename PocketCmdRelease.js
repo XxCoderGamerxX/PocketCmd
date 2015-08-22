@@ -1,8 +1,8 @@
 /* Made by MaxTheGamer with help of VCraft and Quantum
-===[ PocketCmd 1.4]===
+===[ PocketCmd 1.5]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.4.0";
+var ver = "1.5-dev-1";
 function newLevel(){
 	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
@@ -12,9 +12,45 @@ var sa = false;
 var spawnX = NaN && null;
 var spawnY = NaN && null;
 var spawnZ = NaN && null;
+var lang = "en"; //lang values are: en -> English fr -> French nl -> Dutch
 /* --<=>-- COMMANDS --<=>-- */
 function procCmd (cmd) {
 	cmd = cmd.toLowerCase();
+	/* LANGUAGE SETTINGS */
+	if(cmd=="lang"){
+		clientMessage("§aChange the language of the mod. §bModifiez la langue du mod. §cWijzig de taal van de mod.\n§aDo /lang en:fr:nl to change the laguage.\nFaites /lang en:fr:nl pour choisir une langue.\nDoe /lang en:fr:nl om de taal te kiezen.");
+	}
+		if(cmd=="lang en"){
+			if(lang=="en"){
+				clientMessage("§cError. The language is already set as English.");
+				ModPE.showTipMessage("§cError.");
+			}
+			else{
+				lang = "en";
+				clientMessage("§bLanguage changed to English!");
+			}
+		}
+		else if(cmd=="lang fr"){
+			if(lang=="fr"){
+				clientMessage("§cErreur. La langue est déjà mise en tant que français.");
+				ModPE.showTipMessage("§cErreur.");
+			}
+			else{
+				lang = "fr";
+				clientMessage("§bLa langue a été changé en français!");
+			}
+		}
+		else if(cmd=="lang nl"){
+			if(lang == "nl"){
+				clientMessage("§cEen fout is opgetreden! De taal is al reeds Nederlands.");
+				ModPE.showTipMessage("§cFout!");
+			}
+			else{
+				lang = "nl";
+				clientMessage("§aDe taal is succesvol in Nederlands gewijzigt geweest!");
+			}
+		}
+
 	/* Changelog */
 	if (cmd == "changelog"){
 		clientMessage("§6PocketCmd "+ ver + "\n*Added \/setfov command.\n*Added \/setspawn\n*Added \/spawn\n*Added \/removent.\n*Added \/healent.\n*Added \/invisible.\n*Fixed bug with \/fly off. ");
@@ -442,4 +478,4 @@ function procCmd (cmd) {
 		 clientMessage("§bYou're now invisible!");
 		 ModPE.showTipMessage("§aSuccess!");
 	 }
-	}
+}
