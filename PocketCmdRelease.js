@@ -2,7 +2,7 @@
 ===[ PocketCmd 1.5]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.5-dev-2";
+var ver = "1.5-dev-3";
 function newLevel(){
 	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
@@ -205,37 +205,124 @@ function procCmd (cmd) {
 		//gamemode creative
 		   if(cmd == "gamemode c"){
 			   Level.setGameMode(1);
-		   clientMessage("§bYour gamemode has been changed to Creative.");}
+				 if(lang=="en"){
+		   clientMessage("§bYour gamemode has been changed to Creative.");
+		 }
+		 		else if(lang=="fr"){
+					clientMessage("§bVotre mode de jeu a été changé en créatif.");
+				}
+				else if(lang=="nl"){
+					clientMessage("§bJe gamemode is gewijzigt naar overleving.");
+				}
+				else if(lang=="ar"){
+					clientMessage("§bتم تغيير وضعية اللعب إلى وضع الابداع.");
+				}
+		 }
 		//KILL
 		if(cmd == "kill"){
 			Player.setHealth(0);
-
+			if(lang=="en"){
 		   clientMessage("§bYou died. Rest in peace. §oor respawn...");
-
+		 }
+		 else if(lang=="fr"){
+			 clientMessage("§bVous êtes mort.");
+		 }
+		 else if(lang=="nl"){
+			 clientMessage("§bJe stierf.");
+		 }
+		 else if(lang=="ar"){
+			 clientMessage("§cError. No translation available.");
+		 }
 		}
 		// SPEED
 		if (cmd=="speed"){
+			if(lang=="en"){
 			clientMessage("§7Usage: \/speed normal:sprint:quick:fast:superfast");
+		}
+			else if(lang=="fr"){
+				clientMessage("§7Utilisation: /speed normal:sprint:quick:fast:superfast");
+			}
+			else if(lang=="nl"){
+				clientMessage("§7Gebruik: /speed normal:sprint:quick:fast:superfast");
+			}
+			else if(lang=="ar"){
+				clientMessage("§7استعمال: speed normal:sprint:quick:fast:superfast/");
+			}
 		}
 		if(cmd == "speed sprint"){
 			Entity.addEffect(getPlayerEnt(), MobEffect.movementSpeed, 9999*9999, 2, false, false);
+			if(lang=="en"){
 			clientMessage("§bYour speed has increased to §esprint!");
+		}
+			else if(lang=="fr"){
+				clientMessage("§bVotre vitesse a augmenté en: sprint!");
+			}
+			else if(lang=="nl"){
+				clientMessage("§bJe snelheid is verandert naar sprint!");
+			}
+			else if(lang=="ar"){
+				clientMessage("§bتم تغير السرعة الى سريع");
+			}
 		}
 		if(cmd == "speed quick"){
 			Entity.addEffect(getPlayerEnt(), MobEffect.movementSpeed, 9999*9999, 4, false, false);
+				if(lang=="en"){
 			clientMessage("§bYour speed has increased to §equick!");
+		}
+			else if(lang=="fr"){
+				clientMessage("§bVotre vitesse a augmenté en quick!");
+			}
+			else if(lang=="nl"){
+				clientMessage("§bJe snelheid is verandert naar quick!");
+			}
+			else if(lang=="ar"){
+				clientMessage("§bتم تغير السرعة الى الركض");
+			}
 		}
 		if(cmd=="speed fast"){
 			Entity.addEffect(getPlayerEnt(), MobEffect.movementSpeed, 9999*9999, 6, false, false);
+			if(lang=="en"){
 			clientMessage("§bYour speed has increased to §efast!");
+		}
+			else if(lang=="fr"){
+				clientMessage("§bVotre vitesse a augmenté en fast!");
+			}
+			else if(lang=="nl"){
+				clientMessage("§bJe snelheid is verandert naar fast!");
+			}
+			else if(lang=="ar"){
+				clientMessage("§b: تم تغير السرعة الى اسرع");
+			}
 		}
 		if(cmd=="speed superfast"){
 			Entity.addEffect(getPlayerEnt(), MobEffect.movementSpeed, 9999*9999, 12, false, false);
+			if(lang=="en"){
 			clientMessage("§bYour speed has increased to §esuper fast!");
+		}
+			else if(lang=="fr"){
+				clientMessage("§bVotre vitesse a augmenté en super vite!");
+			}
+			else if(lang=="nl"){
+				clientMessage("§bJe snelheid is verandert naar supersnel!");
+			}
+			else if(lang=="ar"){
+				clientMessage("§bتم تغير السرعة الى سرعة خارقة");
+			}
 		}
 		if(cmd == "speed normal") {
 			Entity.removeEffect(getPlayerEnt(), MobEffect.movementSpeed);
+			if(lang=="en"){
 			clientMessage("§bYou no longer move faster.");
+		}
+			else if(lang=="fr"){
+				clientMessage("§bVous n'êtes désormais plus rapide.");
+			}
+			else if(lang=="nl"){
+				clientMessage("§bJe bent niet meer sneller.");
+			}
+			else if(lang=="ar"){
+				clientMessage("§bتم تغير السرعة الى طبيعي");
+			}
 		}
 
 		//GODMODE
@@ -259,7 +346,18 @@ function procCmd (cmd) {
 			Player.addItemInventory(269,1,0);
 			Player.addItemInventory(270,1,0);
 			Player.addItemInventory(271,1,0);
+				if(lang=="en"){
 			clientMessage("§bThe Starter Kit has been obtained!");
+		}
+				else if(lang=="fr"){
+					clientMessage("§bLe kit starter a été obtenu!");
+				}
+				else if(lang=="nl"){
+					clientMessage("§bJe hebt de starter kit gekregen!");
+				}
+				else if(lang=="ar"){
+					clientMessage("§b انت الان تحمل عدة البداية");
+				}
 		}
         if(cmd=="kit fighter"){
 			Player.addItemInventory(261,1,0);
@@ -267,7 +365,18 @@ function procCmd (cmd) {
 			Player.addItemInventory(267,1,0);
 			Player.addItemInventory(259,1,0);
 			Player.addItemInventory(260,64,0);
-			clientMessage("§bThe Fighter Kit has been obtained.")
+				if(lang=="en"){
+			clientMessage("§bThe Fighter Kit has been obtained.");
+		}
+			  else if(lang=="fr"){
+					clientMessage("§bLe kit bagarreur a été obtenu!");
+				}
+				else if(lang=="nl"){
+					clientMessage("§bJe hebt de vechterskit gekregen!");
+				}
+				else if(lang=="ar"){
+					clientMessage("§b انت الان تحمل عدة المحارب");
+				}
 		}
 		if(cmd=="kit pro"){
 			Player.addItemInventory(264,32,0);
@@ -280,8 +389,18 @@ function procCmd (cmd) {
 			Player.addItemInventory(311,1,0);
 			Player.addItemInventory(312,1,0);
 			Player.addItemInventory(313,1,0);
+			if(lang=="en"){
 			clientMessage("§bThe Pro Kit has been obtained.");
-
+		}
+			else if(lang=="nl"){
+				clientMessage("§bJe hebt de pro kit gekregen!");
+			}
+			else if(lang=="fr"){
+				clientMessage("Le kit pro a été obtenu!");
+			}
+			else if(lang=="ar"){
+				clientMessage("§b انت الان تحمل عدة المحترف");
+			}
 		}
 		if(cmd=="kit farmer"){
 			Player.addItemInventory(292,1,0);
@@ -290,7 +409,18 @@ function procCmd (cmd) {
 			Player.addItemInventory(362,15,0);
 			Player.addItemInventory(391,15,0);
 			Player.addItemInventory(392,15,0);
+			if(lang=="en"){
 			clientMessage("§bThe Farmer kit has been obtained.");
+		}
+		 else if(lang=="fr"){
+			 clientMessage("§bLe kit fermier a été obtenu!");
+		 }
+		 else if(lang=="nl"){
+			 clientMessage("§bJe hebt de boerskit gekregen!");
+		 }
+		 else if(lang=="ar"){
+			 clientMessage("§bانت الان تحمل عدة المزارع");
+		 }
 		}
 		if(cmd=="kit netherguy"){
 			Player.addItemInventory(10, 32, 0);
@@ -300,19 +430,64 @@ function procCmd (cmd) {
 			Player.addItemInventory(378, 12, 0);
 			Player.addItemInventory(283, 1, 0);
 			Player.addItemInventory(260, 24, 0);
+			if(lang=="en"){
+				clientMessage("§bYou obtained the netherguy kit!");
+			}
+			else if(lang=="fr"){
+				clientMessage("§bLe kit gars du nether a été obtenu!");
+			}
+			else if(lang=="nl"){
+				clientMessage("§bJe hebt de nether jongen kit gekregen!");
+			}
+			else if(lang=="ar"){
+				clientMessage("§b انت الان تحمل عدة رجل الجحيم");
+			}
 		}
 
 		//Fast Pickax
 		    if(cmd=="fastmine"){
-				clientMessage("§7Use \/fastmine on:off to enable or not fastmine.")
+					if(lang=="en"){
+				clientMessage("§7Use \/fastmine on:off to enable or not fastmine.");
+			}
+				else if(lang=="fr"){
+					clientMessage("§7Utilisation: /fastmine on:off pour activer ou non la fonctionalité Fastmine.");
+				}
+				else if(lang=="nl"){
+					clientMessage("§7Gebruik: /fastmine on:off om Fastmine wel of niet te activeren.");
+				}
+				else if(lang=="ar"){
+					clientMessage("§7استعمال: fastmine on:off/ لتفعيل او تعطيل الاسخراج السريع للمعادن");
+				}
 			}
 			if(cmd=="fastmine on"){
 			Entity.addEffect(getPlayerEnt(), MobEffect.digSpeed, 9999*9999, 54, false, false);
-			clientMessage("§bFastmine has been enabled!")
+			if(lang=="en"){
+			clientMessage("§bFastmine has been enabled!");
+		}
+		 else if(lang=="fr"){
+			 clientMessage("§bFastmine a été activé!");
+		 }
+		 else if(lang=="nl"){
+			 clientMessage("§bFastmine is ge-activeert!");
+		 }
+		 else if(lang=="ar"){
+			 clientMessage("§bتم تفعيل استخراج المعادن السريع");
+		 }
 			}
 			if(cmd=="fastmine off"){
 				Entity.removeEffect(getPlayerEnt(), MobEffect.digSpeed);
-				clientMessage("§bFastmine has been disabled!")
+				if(lang=="en"){
+				clientMessage("§bFastmine has been disabled!");
+			}
+			  else if(lang=="fr"){
+					clientMessage("§bFastmine a été désactivé!");
+				}
+				else if(lang=="nl"){
+					clientMessage("§bFastmine is gedeactiveert!");
+				}
+				else if(lang=="ar"){
+					clientMessage("§bتم تعطيل استخراج المعادن السريع");
+				}
 			}
 		//FLY ON OFF
 		   if (cmd =="fly"){
@@ -547,4 +722,3 @@ function procCmd (cmd) {
 		 ModPE.showTipMessage("§aSuccess!");
 	 }
 }
-
