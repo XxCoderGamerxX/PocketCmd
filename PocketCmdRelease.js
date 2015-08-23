@@ -2,7 +2,7 @@
 ===[ PocketCmd 1.5]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.5-dev-1";
+var ver = "1.5-dev-2";
 function newLevel(){
 	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
@@ -12,13 +12,13 @@ var sa = false;
 var spawnX = NaN && null;
 var spawnY = NaN && null;
 var spawnZ = NaN && null;
-var lang = "en"; //lang values are: en -> English fr -> French nl -> Dutch
+var lang = "en"; //lang values are: en -> English fr -> French nl -> Dutch ar -> Arabic
 /* --<=>-- COMMANDS --<=>-- */
 function procCmd (cmd) {
 	cmd = cmd.toLowerCase();
 	/* LANGUAGE SETTINGS */
 	if(cmd=="lang"){
-		clientMessage("§aChange the language of the mod. §bModifiez la langue du mod. §cWijzig de taal van de mod.\n§aDo /lang en:fr:nl to change the laguage.\nFaites /lang en:fr:nl pour choisir une langue.\nDoe /lang en:fr:nl om de taal te kiezen.");
+		clientMessage("§aChange the language of the mod. §bModifiez la langue du mod. §cWijzig de taal van de mod.\n§aDo /lang en:fr:nl:ar to change the laguage.\nFaites /lang en:fr:nl pour choisir une langue.\nDoe /lang en:fr:nl om de taal te kiezen.");
 	}
 		if(cmd=="lang en"){
 			if(lang=="en"){
@@ -50,10 +50,20 @@ function procCmd (cmd) {
 				clientMessage("§aDe taal is succesvol in Nederlands gewijzigt geweest!");
 			}
 		}
+		else if(cmd=="lang ar"){
+			if(lang== "ar"){
+				clientMessage("§c خطأ. اللغة المستخدمة هي <اللغة العربية>");
+				ModPE.showTipMessage("§cخطأ.");
+			}
+			else{
+				lang = "ar";
+				clientMessage("§a تم تغيير اللغة إلى <اللغة العربية>");
+			}
+		}
 
 	/* Changelog */
 	if (cmd == "changelog"){
-		clientMessage("§6PocketCmd "+ ver + "\n*Added \/setfov command.\n*Added \/setspawn\n*Added \/spawn\n*Added \/removent.\n*Added \/healent.\n*Added \/invisible.\n*Fixed bug with \/fly off. ");
+		clientMessage("§6PocketCmd "+ ver + "*Added support for: French, Dutch and Arabic.");
 	}
       //HELP
       if(cmd=="help" || cmd == "help 1" || cmd=="help1"){
@@ -74,7 +84,19 @@ function procCmd (cmd) {
 
 	   /* CLEAR INVENTORY */
 	   if (cmd == "cleari"){
-	   clientMessage("§l§cThis will remove ALL items from your inventory!\n §c§l Type \"\/cleari now\" to clear it.");}
+			 if(lang=="en"){
+	   clientMessage("§l§cThis will remove ALL items from your inventory!\n §c§l Type \"\/cleari now\" to clear it.");
+	 	}
+			else if(lang=="fr"){
+				clientMessage("§l§cCeci effacera TOUT votre inventaire et ses composants!\n§c§lÉcrivez /cleari now pour continuer.");
+			}
+			else if(lang=="nl"){
+				clientMessage("§c§lDit zal de hele inventaris verwijderen!\n§c§lTyp /cleari now om door te gaan.");
+			}
+			else if(lang=="ar"){
+				clientMessage("§c§l هذا الطلب سوف يحذف جميع المعدات الموجودة في المخزون! اكتب "cleari now/" كي تحزف المعدات من الخزون");
+			}
+ 	}
 	   if (cmd == "cleari now"){
 		   Player.clearInventorySlot(1);
 		   Player.clearInventorySlot(2);
@@ -120,20 +142,66 @@ function procCmd (cmd) {
 		   Player.clearInventorySlot(42);
 		   Player.clearInventorySlot(43);
 		   Player.clearInventorySlot(44);
+			 if(lang=="en"){
 		   clientMessage("§bYour inventory has been cleared successfully!");
+		 	}
+			 else if(lang == "fr"){
+				 clientMessage("§bVotre inventaire a correctement été effacé.");
+			 }
+			 else if(lang=="nl"){
+				 clientMessage("§bUw inventaris is correct verwijdert geweest.");
+			 }
+			 else if(lang=="ar"){
+				 clientMessage("§b تم خذف المعدات من الخزون بنجاح.");
+			 }
 	   }
 	   // HEAL
 	   if (cmd == "heal"){
 		   Player.setHealth(20);
+			 if(lang=="en"){
 		   clientMessage("§bYou have been health successfully.");
+		 }
+			else if(lang == "fr"){
+				clientMessage("§bVotre santé a été restauré.");
+			}
+			else if(lang == "nl"){
+				clientMessage("§bJe bent weer gezond!");
+			}
+			else if(lang=="ar"){
+				clientMessage("§bلقد تم شفائك بنجاح.");
+			}
 	   }
 	   // Gamemode
 	        if (cmd == "gamemode"){
-			clientMessage("§7Available gamemodes\: \n -> \/gamemode s ->Survival \n -> \/gamemode c -> Creative."); }
+						if(lang=="en"){
+			clientMessage("§7Available gamemodes\: \n -> \/gamemode s ->Survival \n -> \/gamemode c -> Creative.");
+				}
+						else if(lang=="fr"){
+							clientMessage("§7Modes de jeu disponibles: \n -> /gamemode s -> Survie. \n -> /gamemode c -> Créatif.");
+						}
+						else if(lang =="nl"){
+							clientMessage("§7Beschikbare gamemodes: \n -> /gamemode s -> Overleving. \n -> /gamemode c -> Creatief.");
+						}
+						else if(lang=="ar"){
+							clientMessage("§7أوضاع اللعب المتاحة:\n  gamemode s/ البقاء  و\n gamemode c/ الابداع");
+						}
+		}
 		// Gamemode survival
 		   if (cmd == "gamemode s"){
 			   Level.setGameMode(0);
-		   clientMessage("§bYour gamemode has been changed to Survival."); }
+				 if(lang=="en"){
+		   clientMessage("§bYour gamemode has been changed to Survival.");
+		 }
+		 		else if(lang=="fr"){
+					clientMessage("§bVotre mode de jeu a été changé en survie.");
+				}
+				else if(lang == "nl"){
+					clientMessage("§bJe gamemode is gewijzigt naar overleving.");
+				}
+				else if(lang=="ar"){
+					clientMessage("§bتم تغيير وضعية اللعب إلى وضع البقاء.");
+				}
+		  }
 		//gamemode creative
 		   if(cmd == "gamemode c"){
 			   Level.setGameMode(1);
@@ -479,3 +547,4 @@ function procCmd (cmd) {
 		 ModPE.showTipMessage("§aSuccess!");
 	 }
 }
+
