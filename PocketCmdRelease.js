@@ -2,7 +2,7 @@
 ===[ PocketCmd 1.5]===
 REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
-var ver = "1.5-dev-3";
+var ver = "1.5-dev-4";
 function newLevel(){
 	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
@@ -491,46 +491,156 @@ function procCmd (cmd) {
 			}
 		//FLY ON OFF
 		   if (cmd =="fly"){
+				 if(lang=="en"){
 			   clientMessage("§7Use \/fly on:off to enable flying or not.");
+			 }
+			 	 else if(lang=="fr"){
+					 clientMessage("§7Utilisez /fly on:off pour activer ou non le vol.");
+				 }
+				 else if(lang=="nl"){
+					 clientMessage("§7Gebruik /fly on:off om de vlucht te activeren of niet.");
+				 }
+				 else if(lang=="ar"){
+					 clientMessage("§7 استعمل fly on:off/ لتفعيل او تعطيل الطيران");
+				 }
 		   }
 		   if(cmd=="fly on"){
 			   Player.setCanFly(1);
+				 	if(lang=="en"){
 			   clientMessage("§bYou are now able to fly!");
+			 }
+			 		else if(lang=="fr"){
+						clientMessage("§bVous pouvez désormais voler!");
+					}
+					else if(lang=="nl"){
+						clientMessage("§bJe kunt vliegen!");
+					}
+					else if(lang=="ar"){
+						clientMessage("§bتسطيع ان تطير الان");
+					}
 		   }
 		   if (cmd=="fly off"){
 		   	if(Player.isFlying()){
 		   	   Player.setFlying(0);
 			   Player.setCanFly(0);
+				 	if(lang=="en"){
 			   clientMessage("§bYou are no longer able to fly!");
+			 }
+			 	else if(lang=="fr"){
+					clientMessage("§bVous ne pouvez désormais plus voler!");
+				}
+				else if(lang=="nl"){
+					clientMessage("§bJe kunt niet meer vliegen!");
+				}
+				else if(lang=="ar"){
+					clientMessage("§bلا تسطيع ان تطير بعد الان");
+				}
 			  		}
 				else{
 					Player.setCanFly(0);
-				  clientMessage("§bYou are no longer able to fly!");
+					if(lang=="en"){
+			 clientMessage("§bYou are no longer able to fly!");
+		 }
+			else if(lang=="fr"){
+				clientMessage("§bVous ne pouvez désormais plus voler!");
+			}
+			else if(lang=="nl"){
+				clientMessage("§bJe kunt niet meer vliegen!");
+			}
+			else if(lang=="ar"){
+				clientMessage("§bلا تسطيع ان تطير بعد الان");
+			}
 						}
 		   }
 		   //CREDITS
 		   if(cmd=="credits"){
-			   clientMessage("§7Made by: MaxTheGamer.\n§7Help of: VCraft and Quantum. \n§7Report bugs: @tgct99.\n§7Version: 1.0 BETA.")
+				 	if(lang=="en"){
+			   clientMessage("§7Made by: SirMaxime.\n§7Help of: VCraft and Quantum. \n§7Report bugs: @tgct99.\n§7Version: "+ver);
+			 }
+			 		else if(lang=="fr"){
+						clientMessage("§7Créé par: SirMaxime. \n§7Aide de: VCraft et Quantum. \n Traductions: FR: SirMaxime | NL: SirMaxime | AR: Kryptonian | SP : VCraft");
+					}
+					else if(lang=="nl"){
+						clientMessage("§7Gemaakt door: SirMaxime.\n§7Help van: VCraft en Quantum. \n Vertalingen: FR: SirMaxime | NL: SirMaxime | AR: Kryptonian | SP: VCraft");
+					}
+					else if(lang=="ar"){
+						clientMessage("§7صنع من SirMaxime .\n§7الساعادات من: VCraft و Quantum . \nالترجمات: الفرنسية: SirMaxime | الهولندية: SirMaxime |  العربية: Kryptonian |  الاسبانية: VCraft");
+					}
 		   }
 		   //TIME
 		   if(cmd=="time"){
+				 	if(lang=="en"){
 			   clientMessage("§7Usage: \/time day:night:morning:evening");
+			 }
+			 		else if(lang=="fr"){
+						clientMessage("§7Utilisation: /time day:night:morning:evening");
+					}
+					else if(lang=="nl"){
+						clientMessage("§7Gebruik: /time day:night:morning:evening");
+					}
+					else if(lang=="ar"){
+						clientMessage("§7استعمال: time day:night:morning:evening");
+					}
 		   }
 		   if(cmd=="time day"){
 			   Level.setTime(1000);
-			   clientMessage("§bTime set to day.")
+				 if(lang=="en"){
+			   clientMessage("§bTime set to day.");
+			 }
+			 	else if(lang=="fr"){
+					clientMessage("§bLe temps a été changé en: jour.");
+				}
+				else if(lang=="nl"){
+					clientMessage("§bDe tijd is verandert in: dag.");
+				}
+				else if(lang=="ar"){
+					clientMessage("§bتم تغير الوقت الى الصبح");
+				}
 		   }
 		   if(cmd=="time night"){
 			   Level.setTime(13000);
+				 if(lang=="en"){
 			   clientMessage("§bTime set to night.");
+			 }
+			 	else if(lang=="fr"){
+					clientMessage("§bLe temps a été changé en: nuit.");
+				}
+				else if(lang=="nl"){
+					clientMessage("§bDe tijd is verandert in: nacht.");
+				}
+				else if(lang=="ar"){
+					clientMessage("§bتم تغير الوقت الى الليل");
+				}
 		   }
 		   if(cmd=="time morning"){
 			   Level.setTime(0);
+				 if(lang=="en"){
 			   clientMessage("§bTime set to morning.");
+			 }
+			 	else if(lang=="fr"){
+					clientMessage("§bLe temps a été changé en: matin.");
+				}
+				else if(lang=="nl"){
+					clientMessage("§bDe tijd is verandert naar: ochtend.");
+				}
+				else if(lang=="ar"){
+					clientMessage("§bتم تغير الوقت الى النهار.");
+				}
 		   }
 		   if(cmd=="time evening"){
 			   Level.setTime(11300);
+				 if(lang=="en"){
 			   clientMessage("§bTime set to evening.");
+			 }
+			 	else if(lang=="fr"){
+					clientMessage("§bLe temps a été changé en: soirée.");
+				}
+				else if(lang=="nl"){
+					clientMessage("§bDe tijs is verandert naar: avond.");
+				}
+				else if(lang=="ar"){
+					clientMessage("§bتم تغير الوقت الى المساء.");
+				}
 		   }
 		   //COORDS
       if(cmd=="coords"){
