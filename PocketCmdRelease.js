@@ -834,7 +834,7 @@ function procCmd (cmd) {
 }
 
 //Lang vars here
-var effectsText;
+var thanks;
 
 //lang list
 var en_US = "en_US";
