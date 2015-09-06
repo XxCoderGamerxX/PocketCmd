@@ -4,7 +4,7 @@ REPORT BUGS TO: @tgct99 on TWITTER
 Do not distribute without the written permision of SirMaxime. */
 var ver = "1.5-dev-4";
 function newLevel(){
-	ModPE.showTipMessage("§aThanks for using §6PocketCmd! §d:D");
+	ModPE.showTipMessage(thanks + " §6PocketCmd! §d:D"); //thanks is defined on lang reader
 	clientMessage("§6Welcome! PocketCmd "+ ver +" successfully loaded!\n§7Use \/help for a list of commands. \n§7Follow @tgct99 on Twitter for news! ");
   }
 /* --<=>-- VAR + ITEMS --<=>-- */
@@ -831,4 +831,39 @@ function procCmd (cmd) {
 		 clientMessage("§bYou're now invisible!");
 		 ModPE.showTipMessage("§aSuccess!");
 	 }
+}
+
+//Lang vars here
+var effectsText;
+
+//lang list
+var en_US = "en_US";
+var es_ES = "es_ES";
+
+function selectLevelHook()//do not edit!
+{
+setupTextsInLanguage();
+}
+
+//define lang var text
+function setupTextsInLanguage(){
+	if (getStringFromMCPESettings()=="en_US") {
+		thanks = "Thanks for using";
+    }if (getStringFromMCPESettings()=="es_ES") {
+		thanks = "¡Gracias por usar";
+    }
+}
+
+function getStringFromMCPESettings(){ //do not edit!
+    var file = new java.io.File("/sdcard/games/com.mojang/minecraftpe/options.txt");
+    var br = new java.io.BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(file)));
+    var read, lang;
+    while((read = br.readLine()) != null) {
+        if(read.split(":")[0] == "game_language") {
+            lang = read.split(":")[1];
+            break;
+        }
+    }
+    br.close();
+    return lang;
 }
