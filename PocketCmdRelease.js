@@ -12,6 +12,7 @@ var sa = false;
 var spawnX = NaN && null;
 var spawnY = NaN && null;
 var spawnZ = NaN && null;
+var i;
 var lang = "en"; //lang values are: en -> English fr -> French nl -> Dutch ar -> Arabic
 /* --<=>-- COMMANDS --<=>-- */
 function procCmd (cmd) {
@@ -97,51 +98,10 @@ function procCmd (cmd) {
 				clientMessage("§c§l هذا الطلب سوف يحذف جميع المعدات الموجودة في المخزون! اكتب "cleari now/" كي تحزف المعدات من الخزون");
 			}
  	}
-	   if (cmd == "cleari now"){
-		   Player.clearInventorySlot(1);
-		   Player.clearInventorySlot(2);
-		   Player.clearInventorySlot(3);
-		   Player.clearInventorySlot(4);
-		   Player.clearInventorySlot(5);
-		   Player.clearInventorySlot(6);
-		   Player.clearInventorySlot(7);
-		   Player.clearInventorySlot(8);
-		   Player.clearInventorySlot(9);
-		   Player.clearInventorySlot(10);
-		   Player.clearInventorySlot(11);
-		   Player.clearInventorySlot(12);
-		   Player.clearInventorySlot(13);
-		   Player.clearInventorySlot(14);
-		   Player.clearInventorySlot(15);
-		   Player.clearInventorySlot(16);
-		   Player.clearInventorySlot(17);
-		   Player.clearInventorySlot(18);
-		   Player.clearInventorySlot(19);
-		   Player.clearInventorySlot(20);
-		   Player.clearInventorySlot(21);
-		   Player.clearInventorySlot(22);
-		   Player.clearInventorySlot(23);
-		   Player.clearInventorySlot(24);
-		   Player.clearInventorySlot(25);
-		   Player.clearInventorySlot(26);
-		   Player.clearInventorySlot(27);
-		   Player.clearInventorySlot(28);
-		   Player.clearInventorySlot(29);
-		   Player.clearInventorySlot(30);
-		   Player.clearInventorySlot(31);
-		   Player.clearInventorySlot(32);
-		   Player.clearInventorySlot(33);
-		   Player.clearInventorySlot(34);
-		   Player.clearInventorySlot(35);
-		   Player.clearInventorySlot(36);
-		   Player.clearInventorySlot(37);
-		   Player.clearInventorySlot(38);
-		   Player.clearInventorySlot(39);
-		   Player.clearInventorySlot(40);
-		   Player.clearInventorySlot(41);
-		   Player.clearInventorySlot(42);
-		   Player.clearInventorySlot(43);
-		   Player.clearInventorySlot(44);
+	   if (cmd == "clearinv now"){
+	   	for(var i = 0; i++; i < 44){
+		   Player.clearInventorySlot(i);
+	   	}
 			 if(lang=="en"){
 		   clientMessage("§bYour inventory has been cleared successfully!");
 		 	}
